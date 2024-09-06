@@ -13,18 +13,17 @@ namespace Blog_.Net.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Posts()
         {
-            ViewBag.Message = "Your application description page.";
-
+            // Lógica para manejar la vista de publicaciones
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Listado()
         {
-            ViewBag.Message = "Your contact page.";
-
+            // Lógica para manejar la vista de "Listado Me Gusta"
             return View();
         }
+
     }
 }

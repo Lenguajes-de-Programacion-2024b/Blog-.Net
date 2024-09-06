@@ -1,20 +1,127 @@
-﻿/* Set padding to keep content from hitting the edges */
-.body-content {
-    margin-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
+﻿body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+header {
+    background: #004080;
+    color: #fff;
+    padding: 10px 0;
+    position: relative;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+    header h1 {
+        margin: 0;
+    }
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+    nav ul li {
+        display: inline;
+        margin: 0 10px;
+    }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+.login-link {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #fff;
+    color: #004080;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #004080;
+    font-weight: bold;
+}
+
+    .login-link:hover {
+        background-color: #004080;
+        color: #fff;
+    }
+
+section {
+    margin: 20px;
+}
+
+#about {
+    background: #e2e2e2;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+    #about h2 {
+        margin-top: 0;
+    }
+
+#login {
+    background: #e2e2e2;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+    #login h2 {
+        margin-top: 0;
+    }
+
+    #login form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #login label {
+        margin-bottom: 5px;
+    }
+
+
+    #login button {
+        padding: 10px;
+        background-color: #004080;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        #login button:hover {
+            background-color: #003366;
+        }
+
+#posts {
+    margin-top: 20px;
+}
+
+    #posts h2 {
+        margin-bottom: 15px;
+    }
+
+    #posts article {
+        background: #fff;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+footer {
+    background: #004080;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
