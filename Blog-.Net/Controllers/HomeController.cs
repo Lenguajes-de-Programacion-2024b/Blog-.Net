@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Blog_.Net.Filters;
+using Blog_.Net.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,8 @@ namespace Blog_.Net.Controllers
 {
     public class HomeController : Controller
     {
+
+        [Checksession]
         public ActionResult Index()
         {
             return View();
@@ -23,6 +27,12 @@ namespace Blog_.Net.Controllers
         {
             // Lógica para manejar la vista de "Listado Me Gusta"
             return View();
+        }
+
+        public ActionResult logout()
+        {
+            Session["infouser"] = null;
+            return RedirectToAction("Login", "Acceso");
         }
 
     }
