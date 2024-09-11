@@ -37,7 +37,14 @@
                             </div>
                             <input type="password" name="Passcode" class="form-control input_pass" value="" placeholder="Contraseña">
                         </div>
-                        
+
+                        @if (!string.IsNullOrEmpty(ViewBag.Message))
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewBag.Message
+                            </div>
+                        }
+
                         <div class="d-flex justify-content-center mt-3 login_container">
                             <button type="submit" name="button" class="btn login_btn">Iniciar Sesion</button>
                         </div>

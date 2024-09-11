@@ -139,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\Login.css" />
+    <Content Include="Content\css\Registered.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

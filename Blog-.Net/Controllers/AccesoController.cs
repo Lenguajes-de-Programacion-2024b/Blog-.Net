@@ -31,10 +31,41 @@ namespace Blog_.Net.Controllers
 
         // El HttpPost del Registro
         [HttpPost]
+
         public ActionResult Registered(InfoUser oInfoUser)
         {
             bool registered;
             string message;
+
+            // Validación de requisitos de la contraseña
+            bool mayuscula = false, minuscula = false, numero = false, carespecial = false;
+            string passcode = oInfoUser.Passcode;
+
+            for (int i = 0; i < passcode.Length; i++)
+            {
+                if (Char.IsUpper(passcode[i]))
+                {
+                    mayuscula = true;
+                }
+                else if (Char.IsLower(passcode[i]))
+                {
+                    minuscula = true;
+                }
+                else if (Char.IsDigit(passcode[i]))
+                {
+                    numero = true;
+                }
+                else
+                {
+                    carespecial = true;
+                }
+            }
+
+            if (!(mayuscula && minuscula && numero && carespecial && passcode.Length >= 8))
+            {
+                ViewData["Mensaje1"] = "La contraseña debe tener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial.";
+                return View();
+            }
 
             if (oInfoUser.Passcode == oInfoUser.ConfirmPasscode)
             {
@@ -50,6 +81,7 @@ namespace Blog_.Net.Controllers
             using (SqlConnection cn = new SqlConnection(cadena))
             {
                 SqlCommand cmd = new SqlCommand("sp_RegisterUser", cn);
+                cmd.Parameters.AddWithValue("UserName", oInfoUser.UserName);
                 cmd.Parameters.AddWithValue("Email", oInfoUser.Email);
                 cmd.Parameters.AddWithValue("Passcode", oInfoUser.Passcode);
                 cmd.Parameters.Add("Registered",SqlDbType.Bit).Direction = ParameterDirection.Output;
@@ -64,14 +96,14 @@ namespace Blog_.Net.Controllers
                 message = cmd.Parameters["Message"].Value.ToString();
             }
 
-            ViewData["Message"] = message;
-
             if (registered)
             {
+                
                 return RedirectToAction("Login","Acceso");
             }
             else
             {
+                ViewData["Message"] = message;
                 return View();
             }
 
@@ -103,7 +135,7 @@ namespace Blog_.Net.Controllers
             }
             else
             {
-                ViewData["Message"] = "Usuario no encontrado";
+                ViewData["Message"] = "Correo o Contraseña incorrectos";
                 return View();
             }
         }
