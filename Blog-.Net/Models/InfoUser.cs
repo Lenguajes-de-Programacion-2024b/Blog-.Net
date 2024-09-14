@@ -8,6 +8,7 @@ namespace Blog_.Net.Models
     public class InfoUser
     {
         public int IdUser { get; set; }
+        public string UserName { get; set; }
         public string Email { get; set; }
         public string Passcode { get; set; }
 
